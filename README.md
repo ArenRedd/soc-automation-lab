@@ -29,7 +29,7 @@ The lab focuses on **hands-on SOC engineering**, **SIEM detections**, and **SOAR
 
 ### High-Level Flow
 
-1. Windows 11 endpoint generates Sysmon telemetry
+1. Windows 10 endpoint generates Sysmon telemetry
 2. Wazuh agent forwards logs to Wazuh Manager
 3. Custom detection rule triggers on Mimikatz execution
 4. Alert is sent to Shuffle via webhook
@@ -51,7 +51,7 @@ The lab focuses on **hands-on SOC engineering**, **SIEM detections**, and **SOAR
 | SOAR             | Shuffle                       |
 | Case Management  | TheHive                       |
 | Threat Intel     | VirusTotal                    |
-| OS               | Windows 11, Ubuntu 24.04      |
+| OS               | Windows 10, Ubuntu 24.04      |
 | Cloud            | VPS (Wazuh & TheHive servers) |
 
 ---
