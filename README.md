@@ -56,7 +56,7 @@ The lab focuses on **hands-on SOC engineering**, **SIEM detections**, and **SOAR
 
 ---
 
-### Infrastructure Setup (Phase 1)
+### Infrastructure Setup [Phase 1](https://github.com/ArenRedd/soc-automation-lab/blob/main/phases/phase-1.md)
 
 ### Secure SSH Access to Ubuntu SOC Servers
 > Establishing secure remote access to cloud-based SOC infrastructure.
@@ -80,10 +80,10 @@ The lab focuses on **hands-on SOC engineering**, **SIEM detections**, and **SOAR
 ```text
 soc-automation-lab/
 ├── phases/
-│   ├── phase-1.txt   # Infrastructure & endpoint setup
-│   ├── phase-2.txt   # Wazuh & TheHive configuration
-│   ├── phase-3.txt   # Sysmon ingestion & custom detection
-│   └── phase-4.txt   # SOAR automation & integrations
+│   ├── phase-1.md   # Infrastructure & endpoint setup
+│   ├── phase-2.md   # Wazuh & TheHive configuration
+│   ├── phase-3.md   # Sysmon ingestion & custom detection
+│   └── phase-4.md   # SOAR automation & integrations
 │
 ├── screenshots/
 │   ├── config-wazuh-to-shuffle.png
@@ -103,7 +103,7 @@ soc-automation-lab/
 
 ## Detection Engineering
 
-### Database & Backend Configuration (Phase 2)
+### Database & Backend Configuration [Phase 2](https://github.com/ArenRedd/soc-automation-lab/blob/main/phases/phase-2.md)
 
 **Apache Cassandra Configuration for TheHive**
 > Backend database configuration required for TheHive alert and case storage.
@@ -121,7 +121,7 @@ This ensures **high-fidelity detection** with minimal noise.
 
 ---
 
-### Detection & Alert Generation (Phase 3)
+### Detection & Alert Generation [Phase 3](https://github.com/ArenRedd/soc-automation-lab/blob/main/phases/phase-3.md)
 
 **Simulated Mimikatz Execution on Windows Endpoint**
 > Triggering malicious credential-dumping activity to validate detection rules.
@@ -140,7 +140,7 @@ This ensures **high-fidelity detection** with minimal noise.
 
 ---
 
-### Wazuh → Shuffle Integration (Phase 4)
+### Wazuh → Shuffle Integration [Phase 4](https://github.com/ArenRedd/soc-automation-lab/blob/main/phases/phase-4.md)
 
 **Wazuh Alert Forwarding to Shuffle via Webhook**
 > Configuration of Wazuh integration to forward alerts into the SOAR platform.
