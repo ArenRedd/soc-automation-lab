@@ -1,1 +1,227 @@
-Back in December 2023, I released a project video called the sock automation project, and it quickly became one of my favorites. I was blown away by the response. Many of you told me that it boosted your confidence, which is awesome. However, recently, I've been getting a lot of emails from people saying that they've had trouble completing the project. The issue is that the applications have since been updated, so the steps and the interface no longer looks the same. And that is why I decided to create an updated version to help all of you complete the project. So instead of one long video, I am going to be breaking it down into four videos covering installing Windows 11, setting up Virtual Box, installing Wazah and the Hive, and getting the automation to run smoothly. But this time around, I'm not going to go super in-depth compared to the original one. The goal here is to walk you through the updated installation and configuration so you can get the project working properly. But before diving into the update, I want to share something that I've been truly passionate about, something that I've been thinking for a long time and finally brought it to life. It is called the my defer sock community. This is a space that is built specifically for those who are serious about becoming a sock analyst. Inside the community, there are challenges like the 30-day my defer Microsoft sock analyst challenge, a 90-day sock accelerator program designed to help you build skills in 90 days, and a sock simulator that will get you to apply what you learned in a sock environment using real enterprise tools like Microsoft Defender XDR and Microsoft Sentinel. So, if you want to learn more about it, I'll leave a link down below for you to check it out or you can head over to school.com/mydefer. With that being said, let's get started. To get started with updating our sock automation project, you want to head over to virtualbox.org. And as of recording, the latest version is version 7.2. However, from my testing, 7.2 doesn't really work as well. So what I'm going to be doing is installing an older version which is 7.1. And to do this we can click on download. Now from here we can click on this Windows host but again this will download 7.2 and that is not the one that I want. The one that I want here we'll go into previous releases and I'll download 7.1. So this one is active maintenance. I believe in our previous sock automation project, we either installed 7.0 or it was around like 6.1, but anyways, I'm going to be installing 7.1, more specifically 7.1.12. So, we'll go ahead and click on that and we'll save it. Click on yes. And just in case if you wanted to make sure that you downloaded the correct version and nothing was corrupted during download, you could always verify the Shaw 256 check sum which is right here. And if you are curious, you can just head over to your Virtual Box directory, hold shift rightclick if you're on a Windows machine, and open up PowerShell. From here, we can use the command of get-file hash. Oops, file hash. point it over to my virtual box. I'll type in vir and hit tab for autocomp completion. So I get a hash of A769 and ending in 1 F5A. And if we take a look over here at the SHA 256 check sums, we do see an A769 and a 1 F5A. That tells me that nothing was corrupted during download and my Virtual Box executable is good to go. I'll go ahead and click on next and just follow the prompts to install this. I accept. Next. We do get a warning saying network interfaces. So if you install this, it will temporarily disconnect you from the network. On yes, yes, and next, install. All right. Now that we're done, click on finish. And this is Virtual Box. Now we need to download a Windows 11 ISO file. And to do that, we'll head over to our web browser, open up a new tab, and let's search up Windows 11 ISO. And I'll click on the first link right here, which is from Microsoft.com. Now, we do have a couple of options to download Windows 11. We have the Windows 11 installation assistant, create a Windows 11 installation media, and lastly, the download Windows 11 disc image. Technically, we could just go ahead and download this particular disc image. However, for some reason, I had some weird experiences within the past by doing this. So, instead, I am going to just click on the create Windows 11 installation media. So, I'll use this one instead. Click on download now, and we'll save it over to our downloads. Go ahead and open that up. Select yes. Click on accept. And I'll leave everything as default. It does say use the recommended options for this PC. Now, we do have two different options that we can use. We can select the USB flash drive or the ISO file. In my case, I'm going to select the ISO file. From here, we can save it under our downloads. And it's going to take a couple minutes. Now that that's done, let's go ahead and click on finish. And we'll open up Virtual Box. From here, I'll click on new located at the top. And I'll type in Windows 11. For the folder, I'll just leave it as default, the ISO image. Let's go ahead and browse over to our Windows ISO that is located in our downloads. And for the type, I'll leave it as Microsoft Windows. For the version, I'm going to change this to Windows 11. Now, taking a look at some of the settings under hardware, it is currently set to 4 gigs and two CPUs. Now, typically 4 gigs should be okay, but I am going to just bump this to 8. And for the hard disk, I'll leave it as 80 gigs. Click on finish and I'll start this up. Go ahead and press any key to continue. And once we're on this page, we'll click on next. Next, and I would like to install Windows 11. I agree. Everything will be deleted. Click on next. For the product key, we can just click on I don't have a product key. And for the version of Windows 11, we want to use Windows 11 Pro and accept. Click on next and install. Now, this is going to take another couple minutes and yeah, we'll come back when it's done. All right, it's been about 10 minutes. So, now we can start configuring Windows 11. Going to click on yes. Go ahead and skip. And for this, we can go ahead and name your device if you want. I'm just going to type in my defer- PC. Click on next. We do have an option to set this up for personal use or for a work/school account. I'm just going to click on set for personal use. And unfortunately, we cannot log in with a local account just yet. So, we do have to actually just sign in with a Microsoft account. Back on Windows 10, there used to be a setting where you can just select don't have an account and then you can use and set up a local account instead. But with Windows 11, it doesn't seem like that is the case. I believe you can disable this later on, but for now, we do need to add in our Microsoft account. And you can create a new one if you want to. Or if you already have an existing one, then you can log in here. And if we click on learn more and scroll all the way down, it does say right here, if you want to sign in with a local account instead of a Microsoft account after setting up your device, then you got to do X, Y, and Zed. So yeah, we need to sign in. After you signed in with the account, you are asked what security info would you like to add. We could actually skip this by scrolling down and clicking on skip for now. Go ahead and create your PIN. If you want this to include letters and symbols, simply check this off. As for your privacy settings, you can click on next if you want to. I'm just going to disable some of these and click on accept. I'll go ahead and click on skip and skip. Click on not now. Man, Windows 11 has a bunch of things. I'm going to decline this. Decline. Next. Skip for now. Are we done? Yes, we are done. Okay, perfect. And there you go. After a couple of prompts, we are finally in our desktop. And that is how you set up Windows 11. The next thing we need to do here is download Sysmon and install it onto this Windows 11 virtual machine. I'll open up Microsoft Edge. Okay, let's uncheck that. Confirm and continue. Continue without Google. Uncheck that. Confirm and start browsing. Let's search up Sysmon. And I'll click on this one right here. Sysmon CIS internals. And from here, just scroll down and we'll download Sysmon. What version is this? As a recording, it is version 15.15. Go into my downloads. Open that up. I will rightclick this folder and I'll click on extract all. Click on extract and here we have sysmon. The next thing is to download the sysmon configuration. Back to my Microsoft Edge here in another tab. I'm going to type in sysmon config Olaf. Click on sysmon modular. So this right here is Olaf's GitHub. And we'll scroll all the way down until we see sysmon config.xml. XML. Click on that and you want to select RAW. From here, just right click anywhere on the screen and save as. And then I'll save it inside of Sysmon's directory. Click on save. Perfect. Now we have Sysmon and Sysmon's config. Open up my Sysmon directory here. I'll click on the start menu and type in PowerShell. I'm going to rightclick this and run as administrator. Click on yes. And over on my sysmon directory, I'm going to click on this search bar. And it's going to highlight the entire file path here. I'll rightclick, copy, head over to PowerShell, type in cd, which is short for change directory space, and then rightclick to paste it in. Hit enter. And now I should be in the same directory as my sysmon. If I type in pwd just to make sure you can see that my file path is c users finan or finan downloads sysmon. I type in ls I can see all of the files here. To install sysmon I just need to type in sysmon hit tab for autocomp completion and I'll make sure to point it over to either sysmon.exe or sysmon64.exe. Either one will work. For my example I'm going to use sysmon 64. Press space dash I for installation and then I will point it over to my sysmon config file again. Hit tab for autocomp completion and there it is. I hit enter. It should go out and start installing after I select agree. Just like that. Couple seconds sysmon 64 is started. Just to make sure, I'll open up a services and then I'll navigate over to the sysmon service which is down here. Sysmon 64. It is currently running. So that is how I know that sysmon is installed and running as expected. Another way to check too is if you open up the start menu, type in event viewer. We can click into applications and services log. Expand the Microsoft directory here. Windows and then we'll scroll all the way down until we see Sysmon which is right here. So go ahead and open that up and click into operational. If Sysmon is installed correctly and running, you should see some logs here which we do. I'll go ahead and close this out. We can close PowerShell and close out Sysmon. I'll leave the web browser up and running just for now. But after we're done with installing Sysmon, the next thing is to create a snapshot for our Windows 11 virtual machine. That way, if anything goes wrong, we can always just revert it back to our snapshot. To do this, you want to click on machine and then click on take snapshot. For the name, I'll just say sysmon-installed and click on okay. We see the progress for our snapshot. Let's just wait until it is completed and then we can move on to the next phase. Once that is good to go, the next thing to do here is download Waza. To download and install Waza, I am going to be using a cloud provider called Vulture. And I'll leave a link down below where if you sign up with it, you will receive a $300 free credit. Now, this only applies for firsttime users. And do keep in mind that you are required a valid credit card. Now, you don't need to use Vulture. You can use any other cloud provider you want like Azure, AWS, GCP, Digital Ocean, etc. For me, I just like using Vulture. Once you've signed into Vulture, if you're following along, you can click on the deploy button and select deploy new server. For the type, I am going to select shared CPU. And location, just select the one that is closest to you, which in my case, it is Toronto. Scrolling down here for the specs, I am going to select this one right here. Four CPUs and 8 gigs of memory. This is going to be my Waza server. I'll click on configure software. And for the operating system, let's go ahead and select YUbuntu and I'll select 24.04. Now, there is a latest version here, which is 25.04 04 as of recording, but sometimes there's some software that just doesn't work with the latest and greatest. So instead, I am going to choose the middle ground, which is 24.04. The server name, I'll name it as my defer-up. I do not need automatic backups, so I'll go ahead and just disable that. And yeah, this looks good. I'll click on deploy. While that's installing, I'll go ahead and select deploy again and deploy a new server. This time I'm going to start building up a virtual machine for the hive. Click on shared CPU again. Select Toronto. And for the hive, because it does utilize Elastic Search and Cassandra for the database, it does need to be a little bit more beefier. So I will select a 16 gig virtual machine, which in my case here is this one. So six vCPUs and 16 gigs of RAM. If you select a lower spec virtual machine, you might run into some problems. Just an FYI, click on configure software. And for the operating system, I'll select the same thing, yubuntu 24.04. The server host name, let's type in my defer- thehive and disable automatic backups. There we go. Click on deploy. Now we have two virtual machines up in the cloud. I'll start off with the Wazal one. So I'll click on and do take note of your public IP address which in my case it is 137.22053.146 and this is for my Wazal server. Your virtual machine up in the cloud is going to be different. So make sure you take note of this particular public IP. You do have a couple of ways to access your virtual machine. The first way is actually using Vulture's built-in console. And you can select this monitor icon that says view console. By doing so, we get dropped into a shell here. But I personally don't like working in here. So what I will do is that on my host machine, I'll open up a PowerShell window. Let me clear this out. And I'll type in SSH. Type in the username, which is root in my case. If you follow along with vulture, it is by default root and I'll copy my public IP address and type in at and paste in my public IP. So what I'm doing here is that I am going to SSH into my virtual machine because it is a lot more in my opinion cleaner and easier to work with. I'll hit enter and then it's asking me are you sure you want to continue? Yes, I do. And now it's asking me for the password. I'll copy the password here and I'll paste it inside of my PowerShell here. Now, you won't see the password because it is built like that for security reasons, but as long as you rightclick, you should be able to hit enter and be good to go. Now, if for whatever reason you're getting an incorrect password, then you might need to just type it out, but you'll eventually be able to log in. From here, I'm going to clear out the screen and let's go ahead and update and upgrade all of our repositories. So, I'll type in app get update and app get upgrade-y. While this goes out and does its thing, let's go ahead and start searching up for Waza. So, I'll type in Waza in Google. Click on install Waza and we'll scroll down, select quick start, and if we scroll all the way down here, we do see a download and run the Waza installation assistant. I am going to copy this command. And by the way, as of recording, it is currently version 4.12. Eventually, we'll see a screen like this. I'll just hit enter. Once that is good to go, clear out the screen and let's paste in that command by clicking rightclick. And it looks like I didn't copy it correctly. So, let's go back over to what's up. And right here, click on copy. Or you know what? Just for safe measure, let's rightclick, copy. go back into my PowerShell and rightclick. So there you go. It copied and pasted over to my SSH session and went out and automatically is doing its thing. While we wait for Wizad to get set up, let's jump over to our Hive virtual machine and update and upgrade its repositories. Over to my cloud instance, I'm going to select the Hive virtual machine and again take note of the IP address. Copy that. I'll open up another PowerShell window and then type in SSH root at paste in the IP address and then hit enter. Type in yes. And now we need the password. Go ahead and copy the password and paste that in here. Clear out the screen. Type in aptget update and appget upgrade-y. While it's doing that, let's head back over to our Waza and check its status. So this right here is our Wazah SSH instance. And I don't see anything happening. So I'm going to hit enter. Oh, there you go. We get the Waz indexer, Waz server. Currently, it is starting the Wazal manager. And I believe that is going to take a couple minutes. All right. Once Waz is done installing, you want to make sure to keep track of your username, which is admin by default, and the password itself. So I'm going to go ahead and copy this. Open up a notepad. Type in password. Paste that in there. And the user is admin. And this right here is voa. Now, it does say you can access the web interface. So, let's go ahead and try that. Over on my web browser, I'm going to open up a new tab here. Type in https. And we need to type in our public IP for what's up, which I do not remember. Let me go back here. And if I hover over this IP address, I can simply copy it, head back to my tab, paste it in, and hit enter. We do get an error connection timed out. So, let's do a little bit of troubleshooting. First and foremost, we want to make sure to see if there's any firewall that's blocking our access. And to do that, I will go over to Vulture, click into my Waza, go over to my settings, click on firewall. And currently there are no firewalls attached for this virtual machine. So that means my network is okay, but it could be my host firewall that is blocking access. Going back over to my wasah SSH instance, I'm going to clear out the screen. And before I make any modifications to my firewall, I do want to see if my was service is actually running because if it's not running, then it makes sense that I'm unable to connect. To do this, I'll type in systemct ctl status waza dash and hit tab twice. This will allow me to see what kind of options there are. We got the wasah dashboard indexer indexer here and manager. What I want to take a look at is the waza- manager service. Currently, it is active and running. So, I know that the service is up and running. If I go back over to my web browser and refresh this, we can confirm that even though the service is up and running, we still can't access it. So, let's make some modifications to our host firewall. Again, over to my wasah SSH session, clear up the screen, and I am going to allow any traffic coming in on port 443, aka HTTPS. So I'll type in ufw allow 443 which is my port. This will say the rule was added. Now let's go and refresh our web page. And now we get a your connection is not private. We're getting something. Click on advanced and proceed. Now we are accessing Waz manager. Let's go ahead and log in using our credentials that we saved. Type in admin over to my trusty notepad. Let's go ahead and copy the password and paste that in here. And there you go. We are now in Woah and it is up and running. To get started with the Hive, I will put this link in the description down below. But the biggest difference between the previous stock automation and the updated stock automation is that in the previous version, you could use the Hive for pretty much forever. Whereas in the updated version, it is only available for 14 days. In other words, they give you a 14-day free trial. What that means for you is that if you plan on completing the sock automation project, make sure to complete it within 14 days. And this is how we get started. So, first and foremost, I am going to copy this, which are the dependencies. Head over to my Hive virtual machine SSH instance. Clear out the screen and let's paste that in. type in y. Now that that's good, let's go ahead and scroll down and let's install the Java virtual machine. Make sure you're under deb. Go and copy these commands and we'll paste that in here. Once that is good, let's continue on. We can verify the installation by typing in java- version. And you know what? Let's go ahead and do that. Java dash version and it says, hey, Java is not found. That's not good. Let's minimize this and let's take a look. So maybe it didn't update or install Java. So I will actually go ahead and run these two commands manually. At update and we do see four packages can be upgraded. So you know what? Let's just go ahead and upgrade them, too. fny. While that's doing its thing, I'm going to take a look at the next command, which is apt install java. You know what? Let me just copy this. And that way I can paste it in here. Clear that out. App install. Paste. All right. Now that that is done, let's type in java dash version. Now it works. So that is why it's always a good idea to just do some validation. Next thing to do is install Apache Cassandra. Copy that out and paste that in here. Let's do the same thing here. And then it did instruct us to perform an apt update and apt upgrade. Perfect. Now that that's done, take a look here. Oh, it didn't say upgrade. My bad. It did say app install Cassandra. That's all good. There you go. Now we should be good. And we do have some instructions on how to configure it, but we'll do that in the next video. For now, let's just make sure that we have everything installed. The next thing is Elastic Search. So, I'll copy out this And this as well. And finally, the last command. Now, we do have one package to upgrade, so might as well just do that, too. All right, the last thing to do is to actually install the Hive, which is right here. And I'll go ahead and copy the wget. So, using wget, copy these out. and let's paste that in here. So, the version that I'm currently downloading as of recording is 5.5.7. And if we scroll down, we can start installing the package here. So, I'll just go ahead and copy this out and I'll paste that in here. Awesome. And I believe that is it. Let me double check here. We have the configuration, but again, we'll do that in the next video. And we do have cortex and miss, but I'm not going to use that for now. And yeah, that is it. So, I'll see you in the next
+# Phase 1 – Windows Endpoint, Sysmon, Wazuh Server, and TheHive Infrastructure Setup
+
+## Objective
+
+Set up the foundational infrastructure required for the SOC Automation project, including:
+
+* Windows 11 endpoint with Sysmon logging
+* Wazuh SIEM/XDR server
+* TheHive case management server
+  This phase focuses strictly on installation, validation, and baseline readiness.
+
+---
+
+## 1. VirtualBox Installation
+
+### Version Selection
+
+* **VirtualBox version used:** `7.1.12`
+* Reason: More stable compatibility compared to newer releases.
+
+### Installation Steps
+
+1. Download VirtualBox 7.1.12 from **Previous Releases**.
+2. Install with default options.
+3. Accept network interface reset warning.
+4. Complete installation.
+
+### Integrity Verification (Optional but Recommended)
+
+```powershell
+Get-FileHash VirtualBox-7.1.12.exe
+```
+
+* Confirm SHA-256 checksum matches the official release.
+
+---
+
+## 2. Windows 11 Virtual Machine Setup
+
+### ISO Creation
+
+1. Download **Windows 11 Installation Media Tool**.
+2. Select **Create installation media**.
+3. Choose **ISO file** option.
+4. Save ISO locally.
+
+### Virtual Machine Configuration
+
+* OS Type: Microsoft Windows
+* Version: Windows 11
+* RAM: **8 GB**
+* CPU: **2 vCPUs**
+* Disk: **80 GB (VDI, dynamically allocated)**
+
+### Windows Installation
+
+1. Boot VM using ISO.
+2. Select **Windows 11 Pro**.
+3. Skip product key.
+4. Complete standard installation.
+5. Sign in with Microsoft account (required during setup).
+6. Complete privacy and device configuration.
+
+---
+
+## 3. Sysmon Installation on Windows 11
+
+### Sysmon Download
+
+* Source: Sysinternals
+* Version used: `15.15`
+
+### Sysmon Configuration
+
+* Configuration file: **Olaf Hartong’s sysmon-config.xml**
+* Download raw XML and save in Sysmon directory.
+
+### Installation Commands
+
+```powershell
+sysmon64.exe -i sysmonconfig.xml
+```
+
+### Validation
+
+* Check service status:
+
+  * `Sysmon64` running
+* Event Viewer:
+
+  * Applications and Services Logs → Microsoft → Windows → Sysmon → Operational
+  * Logs should be present and updating
+
+---
+
+## 4. Snapshot Creation
+
+Create a snapshot after Sysmon installation:
+
+* Snapshot Name: `sysmon-installed`
+* Purpose: Restore point before agent integration
+
+---
+
+## 5. Wazuh Server Deployment
+
+### Cloud VM Specifications
+
+* OS: Ubuntu 24.04 LTS
+* CPU: 4 vCPUs
+* RAM: 8 GB
+* Role: Wazuh Manager + Indexer + Dashboard
+
+### Initial Server Setup
+
+```bash
+apt update && apt upgrade -y
+```
+
+### Wazuh Installation
+
+```bash
+curl -sO https://packages.wazuh.com/4.x/wazuh-install.sh
+bash wazuh-install.sh -a
+```
+
+### Services Installed
+
+* Wazuh Manager
+* Wazuh Indexer
+* Wazuh Dashboard
+
+### Credential Handling
+
+* Default user: `admin`
+* Save generated password securely
+
+### Firewall Configuration
+
+```bash
+ufw allow 443
+```
+
+### Access Validation
+
+* URL: `https://<WAZUH_PUBLIC_IP>`
+* Login using admin credentials
+* Dashboard access confirms successful deployment
+
+---
+
+## 6. TheHive Server Deployment
+
+### Cloud VM Specifications
+
+* OS: Ubuntu 24.04 LTS
+* CPU: 6 vCPUs
+* RAM: 16 GB
+* Purpose: Case management backend
+
+### System Preparation
+
+```bash
+apt update && apt upgrade -y
+```
+
+---
+
+## 7. Dependency Installation for TheHive
+
+### Java (Required)
+
+```bash
+apt install -y openjdk-11-jre-headless
+java -version
+```
+
+### Apache Cassandra
+
+```bash
+apt install -y cassandra
+```
+
+### Elasticsearch
+
+```bash
+apt install -y elasticsearch
+```
+
+---
+
+## 8. TheHive Installation
+
+### Package Download
+
+```bash
+wget https://download.thehive-project.org/thehive_5.5.7_all.deb
+```
+
+### Installation
+
+```bash
+apt install ./thehive_5.5.7_all.deb
+```
+
+> Configuration and service integration are deferred to the next phase.
+
+---
+
+## Phase Completion Criteria
+
+* Windows 11 endpoint running with Sysmon logging enabled
+* Snapshot created post-Sysmon installation
+* Wazuh dashboard accessible over HTTPS
+* TheHive installed with all dependencies resolved
+
+---
+
+**End of Phase 1**
+Next phase covers:
+
+* Wazuh agent deployment
+* Sysmon log ingestion
+* TheHive configuration
+* SOC automation workflow integration
+
+---
