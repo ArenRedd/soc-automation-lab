@@ -4,7 +4,7 @@
   "status": "New",
   "source": "Wazuh",
   "tags": ["credential-dumping", "T1003"],
-  "description": "Mimikatz activity detected on WIN11-ENDPOINT by user CORP\employee1",
+  "description": "Mimikatz activity detected on WIN10-ENDPOINT by user CORP\employee1",
   "observables": [
     {
       "dataType": "hash",
