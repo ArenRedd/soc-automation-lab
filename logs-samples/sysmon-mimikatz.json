@@ -2,7 +2,7 @@
   "EventTime": "2025-12-25T10:14:33.412Z",
   "EventID": 1,
   "Source": "Microsoft-Windows-Sysmon",
-  "Computer": "WIN11-ENDPOINT",
+  "Computer": "WIN10-ENDPOINT",
   "User": "CORP\\employee1",
   "Image": "C:\\Users\\employee1\\Downloads\\mimikatz.exe",
   "CommandLine": "mimikatz.exe privilege::debug sekurlsa::logonpasswords",
