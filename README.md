@@ -23,6 +23,9 @@ The lab focuses on **hands-on SOC engineering**, **SIEM detections**, and **SOAR
 
 ## Architecture
 
+<img width="1582" height="695" alt="SOC-Automation-Project-Diagram" src="https://github.com/user-attachments/assets/608c6d58-70f7-488b-bb40-0f48e6d6d99e" />
+
+
 ### High-Level Flow
 
 1. Windows 11 endpoint generates Sysmon telemetry
@@ -52,6 +55,13 @@ The lab focuses on **hands-on SOC engineering**, **SIEM detections**, and **SOAR
 
 ---
 
+### Infrastructure Setup (Phase 1)
+
+<img width="1247" height="865" alt="setting-ssh-in-ubuntu-server" src="https://github.com/user-attachments/assets/ef9df6af-49db-476c-b4c3-b4f5287ebbaa" />
+<img width="1920" height="1080" alt="installing-wazuh" src="https://github.com/user-attachments/assets/ffdfa014-6a68-411c-8deb-655e01141067" />
+<img width="1243" height="732" alt="installing - thehive" src="https://github.com/user-attachments/assets/b3552e31-4821-4c9a-a827-45c0e5691f53" />
+<img width="506" height="81" alt="username-and-passwd-wazuh" src="https://github.com/user-attachments/assets/59d01dfd-8b87-4b77-a60a-eee259af1f08" />
+
 ## Repository Structure
 
 ```text
@@ -80,6 +90,11 @@ soc-automation-lab/
 
 ## Detection Engineering
 
+### Database & Backend Configuration (Phase 2)
+**Backend Configuration (Cassandra)**
+<img width="960" height="1020" alt="config-cassandra" src="https://github.com/user-attachments/assets/7dbdfa2d-189c-43f8-b283-32dd8e757be8" />
+
+
 ### Custom Detection Rule
 
 * Detects **Mimikatz execution**
@@ -90,6 +105,9 @@ soc-automation-lab/
 This ensures **high-fidelity detection** with minimal noise.
 
 ---
+
+### Detection & Alert Generation (Phase 3)
+<img width="1285" height="812" alt="running-mimikatze-to-get-alert-in shuffle" src="https://github.com/user-attachments/assets/bd1e4c80-a6ab-40a1-b1ca-58537a8a49d6" />
 
 ## SOAR Automation Workflow
 
@@ -104,7 +122,18 @@ This ensures **high-fidelity detection** with minimal noise.
 
 ---
 
+### Wazuh → Shuffle Integration (Phase 4)
+<img width="1917" height="1080" alt="config-wazuh-to-shuffle" src="https://github.com/user-attachments/assets/677f2c32-0680-4b09-9fa3-e3d676e3c0fb" />
+<img width="1920" height="1080" alt="config-wazuh-to-shuffle-2" src="https://github.com/user-attachments/assets/97f1da33-0dff-407c-8319-a432761a55c9" />
+
 ## Validation & Results
+
+### Completed Shuffle Workflow
+<img width="1920" height="947" alt="shuffle-completed-flow" src="https://github.com/user-attachments/assets/2abeb49b-71a5-4542-a273-36b79d4e96cb" />
+
+### Incident Creation in TheHive
+<img width="1682" height="650" alt="hive-got-the-alert-and-hive-dashboard" src="https://github.com/user-attachments/assets/12ddbfe8-af25-4612-b861-a51fe2bcbead" />
+
 
 ### Confirmed Outcomes
 
