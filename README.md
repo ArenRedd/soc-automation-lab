@@ -78,25 +78,26 @@ The lab focuses on **hands-on SOC engineering**, **SIEM detections**, and **SOAR
 ## Repository Structure
 
 ```text
-soc-automation-lab/
-├── phases/
-│   ├── phase-1.md   # Infrastructure & endpoint setup
-│   ├── phase-2.md   # Wazuh & TheHive configuration
-│   ├── phase-3.md   # Sysmon ingestion & custom detection
-│   └── phase-4.md   # SOAR automation & integrations
-│
-├── screenshots/
-│   ├── config-wazuh-to-shuffle.png
-│   ├── config-wazuh-to-shuffle-2.png
-│   ├── running-mimikatz-to-get-alert-in-shuffle.png
-│   ├── shuffle-completed-flow.png
-│   └── hive-got-the-alert-and-hive-dashboard.png
-│
-├── docs/
-│   └── architecture/
-│       └── Formatted-SOC-Automation-Project-Diagram.png
-│
-└── README.md
+Folder PATH listing
+Volume serial number is 3C40-5C42
+C:.
+├───configs
+│   ├───sysmon
+│   └───wazuh
+│       └───custom-rules
+├───docs
+│   ├───architecture
+│   ├───automation
+│   ├───detections
+│   └───setup
+├───logs-samples
+├───phases
+├───screenshots
+│   ├───shuffle-workflows
+│   ├───thehive-alerts
+│   └───wazuh-dashboard
+└───soc-automation-lab
+
 ```
 
 ---
