@@ -1,0 +1,14 @@
+{
+  "EventTime": "2025-12-25T10:14:33.412Z",
+  "EventID": 1,
+  "Source": "Microsoft-Windows-Sysmon",
+  "Computer": "WIN11-ENDPOINT",
+  "User": "CORP\\employee1",
+  "Image": "C:\\Users\\employee1\\Downloads\\mimikatz.exe",
+  "CommandLine": "mimikatz.exe privilege::debug sekurlsa::logonpasswords",
+  "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+  "IntegrityLevel": "High",
+  "Hashes": {
+    "SHA256": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"
+  }
+}

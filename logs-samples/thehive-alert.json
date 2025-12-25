@@ -1,0 +1,14 @@
+{
+  "title": "Mimikatz Detected on Endpoint",
+  "severity": 3,
+  "status": "New",
+  "source": "Wazuh",
+  "tags": ["credential-dumping", "T1003"],
+  "description": "Mimikatz activity detected on WIN11-ENDPOINT by user CORP\employee1",
+  "observables": [
+    {
+      "dataType": "hash",
+      "data": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"
+    }
+  ]
+}

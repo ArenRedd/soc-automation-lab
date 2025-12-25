@@ -1,0 +1,22 @@
+{
+  "timestamp": "2025-12-25T10:14:35.902Z",
+  "rule": {
+    "id": "100002",
+    "level": 12,
+    "description": "Credential dumping tool detected (Mimikatz)",
+    "mitre": {
+      "technique": ["Credential Dumping"],
+      "id": ["T1003"]
+    }
+  },
+  "agent": {
+    "id": "001",
+    "name": "WIN11-ENDPOINT",
+    "ip": "192.168.1.20"
+  },
+  "data": {
+    "process_name": "mimikatz.exe",
+    "command_line": "privilege::debug sekurlsa::logonpasswords",
+    "hash_sha256": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"
+  }
+}

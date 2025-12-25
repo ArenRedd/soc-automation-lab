@@ -1,0 +1,32 @@
+<Sysmon schemaversion="4.90">
+  <EventFiltering>
+    <RuleGroup name="" groupRelation="or">
+      <ProcessCreate onmatch="include">
+        <Rule groupRelation="and">
+          <Image condition="is">C:\Windows\system32\lsass.exe</Image>
+          <OriginalFileName condition="is">lsass.exe</OriginalFileName>
+        </Rule>
+      </ProcessCreate>
+    </RuleGroup>
+    <RuleGroup name="" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <Rule groupRelation="and">
+          <TargetImage condition="is">C:\Windows\system32\lsass.exe</TargetImage>
+          <GrantedAccess condition="is">0x1010</GrantedAccess>
+        </Rule>
+      </ProcessAccess>
+    </RuleGroup>
+    <RuleGroup name="" groupRelation="or">
+      <FileCreate onmatch="exclude">
+        <Rule groupRelation="and">
+          <Image condition="end with">chrome.exe</Image>
+          <TargetFilename name="flock" condition="contains">\Default\</TargetFilename>
+        </Rule>
+        <Rule groupRelation="and">
+          <Image condition="end with">firefox.exe</Image>
+          <TargetFilename name="flock" condition="contains">\Mozilla\Firefox\</TargetFilename>
+        </Rule>
+      </FileCreate>
+    </RuleGroup>
+  </EventFiltering>
+</Sysmon>
