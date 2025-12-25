@@ -64,7 +64,8 @@ The lab focuses on **hands-on SOC engineering**, **SIEM detections**, and **SOAR
 
 ### Wazuh SIEM/XDR Installation and Initialization
 > Deployment of the Wazuh Manager, Indexer, and Dashboard components.
-<img width="1920" height="1080" alt="installing-wazuh" src="https://github.com/user-attachments/assets/ffdfa014-6a68-411c-8deb-655e01141067" />
+<img width="1920" height="865" alt="installing-wazuh" src="https://github.com/user-attachments/assets/449c9959-431c-4065-9d18-665cddd4876b" />
+
 
 ### TheHive Case Management Platform Installation
 > Installing and preparing TheHive for incident and alert management.
