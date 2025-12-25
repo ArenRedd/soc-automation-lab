@@ -8,7 +8,9 @@ The lab simulates real-world detection, enrichment, alerting, and response workf
 
 ## Architecture
 
-- Endpoint: Windows 11 (Sysmon + Wazuh Agent)
+<img width="1582" height="695" alt="Formatted-SOC-Automation-Project-Diagram" src="https://github.com/user-attachments/assets/4f30de14-6074-4087-ba58-754fb51656af" />
+
+- Endpoint: Windows 10 (Sysmon + Wazuh Agent)
 - SIEM / XDR: Wazuh Manager (Ubuntu Server)
 - SOAR: Shuffle
 - Case Management: TheHive
