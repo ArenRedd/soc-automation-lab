@@ -59,19 +59,19 @@ The lab focuses on **hands-on SOC engineering**, **SIEM detections**, and **SOAR
 ### Infrastructure Setup (Phase 1)
 
 ### Secure SSH Access to Ubuntu SOC Servers
-Establishing secure remote access to cloud-based SOC infrastructure.
+> Establishing secure remote access to cloud-based SOC infrastructure.
 <img width="1247" height="865" alt="setting-ssh-in-ubuntu-server" src="https://github.com/user-attachments/assets/ef9df6af-49db-476c-b4c3-b4f5287ebbaa" />
 
 ### Wazuh SIEM/XDR Installation and Initialization
-Deployment of the Wazuh Manager, Indexer, and Dashboard components.
+> Deployment of the Wazuh Manager, Indexer, and Dashboard components.
 <img width="1920" height="1080" alt="installing-wazuh" src="https://github.com/user-attachments/assets/ffdfa014-6a68-411c-8deb-655e01141067" />
 
 ### TheHive Case Management Platform Installation
-Installing and preparing TheHive for incident and alert management.
+> Installing and preparing TheHive for incident and alert management.
 <img width="1243" height="732" alt="installing - thehive" src="https://github.com/user-attachments/assets/b3552e31-4821-4c9a-a827-45c0e5691f53" />
 
 ### Wazuh Dashboard Initial Credentials Generation
-Verification of successful Wazuh installation and secure credential provisioning.
+> Verification of successful Wazuh installation and secure credential provisioning.
 <img width="506" height="81" alt="username-and-passwd-wazuh" src="https://github.com/user-attachments/assets/59d01dfd-8b87-4b77-a60a-eee259af1f08" />
 
 ## Repository Structure
