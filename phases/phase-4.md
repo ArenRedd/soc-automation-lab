@@ -1,1 +1,288 @@
-This is the final part in the my defer sock automation project update. In today's video, we are going to combine all of our tools and create a working automation. Let's get started. All right, to get started with the automation, you want to head over to shuffler.io and then create an account if you haven't done so already. Once you've signed in, you want to head over to workflows and then click on create workflow. For the name, I'm just going to say my defer sock auto project update. Click on create from scratch. And here you go. We can now start building our automation. So I'm going to start by dragging the web hook and place it inside here. For this particular web hook, I'll click on it. And then you'll want to copy the web hook URI because we'll need to modify our WA manager osac.com file and update it pointing to this URI. I'll head over to my SSH session for my Waz manager. Clear up the screen here. And then I will edit our var osac etc osac.com file. Now if we scroll down in between the global and alerts I am going to hit enter a couple times that way we got some separation and I'll type in integration name is shuffle and close that off. We'll do hook URL and this is going to contain our web hook which again is right here. Make sure we copy that and we'll paste it here. Then let's close this off. hook URL and I'll add in a rule ID which our rule was 100,000 and two. Close that one off. rule ID. And finally, we have the alert format. This is going to be in JSON. Perfect. And now let's close off our integration tag. All right. Now, I'm going to just make this a little bit more prettier. Just make sure it aligns properly. Just like so. Cool. And I can also remove some of these empty spaces. And now I'm going to hit Ctrl X Y to save. And let's restart our Wazal manager. While that's restarting, let's go back over to our shuffle. And from here I am going to click on start. So now I am listening in on any events that come in. Well, more specifically I am listening in on any alerts containing 100,0002 or where the rule ID is 100,0002. So let's regenerate our mimikats alert over on my Windows 11 virtual machine. Go ahead and exit this out and then rerun mimikats. This in theory should then trigger another alert which then should be sent over to our shuffle web hook. And if we click on explore runs, we could see that there is one web hook right here. And there it is. We have our data. We got a Waza alert. Mimikat's usage detected. We could also expand all fields. And we should see some logs. Yeah, right here. Full log event data. And wow. Okay, that is quite a bit. But yeah, essentially our web hook is working as expected. And now is the fun part. We get to start creating some automations. In the previous automation project, we did extract a Shaw 256 hash and then we ran that into virus total. So let's build the same thing. I'll drag over the shuffle tools and I'll change the repeat back to me to reax capture group. And for the reax, I'm going to type in Shaw 256 equals parenthesis square bracket 0 to 9 A to capital F and then lowerase A to lowercase F. Let's go ahead and close that off with a square bracket. Do a curly bracket 64. Close that one off and close our parenthesis. Now, if we click on our web hook, let's attach that over to our shuffle tool. And I'll rename this as Shaw 256 Reax. Let's do hash. There you go. Now over to the input data. If I click on the plus icon, I should be able to see some of the data here under runtime argument. And is there a Shaw 256? H. Oh, under hashes. Yeah, right here. Perfect. So, I'll click on hashes. And what this is going to do is that it's going to look into this field of hashes, perform this reax, and pull whatever data or value that contains. The next thing I'll do is drag in virus total. And we do need to authenticate to virus total. So let's head over to virus total.com and go ahead and create an account if you haven't done so already. Once you've signed in, over on the top right corner, you want to click on your dropown and select API key. Go ahead and copy your API key. And let's head back over to shuffle. Paste that in here. And I'm just going to type in VT O. Hit submit. And technically we should be authenticated. And if we take a look at the actions, we do have a couple actions that we can do. There is get a domain report, get a hash report, get an IP address, add a comment, etc. What we want to do is get a hash report. And for the hash itself, we'll need to connect our Shaw 256 hash function into our virus total. Now we can change the hash value by clicking on the plus icon and select our Shaw 256 hash just like so. What we can do is save out our workflow. Once we have saved the workflow, go ahead and refresh the page and do make sure that your web hook is still listening, which in my case it is. Let's go back over to our virtual machine. exit this out and let's rerun mimikats one more time. And after a couple seconds here, we can see that our Shaw 256 hash function went from gray to green. So if we click on the explore runs over on the right and select back to all runs, we can see that there are two workflows that ran. The bottom one was our initial testing and the next one is the recent one that we just did. So if we click on it, let's see here. Did our Shaw 256 hash function properly capture our hash? And it appears to be so because take a look at that. We have our hash. It starts with 61 C0 and ends in D8 A1. Just to make sure that we are correct here, I am going to go over to where our hashes is currently located and that is right here. Hashes. So if we scroll over to the right under Shaw 256. So right here, the hash starts with 61 C0. So we're on the right track. Our function worked correctly. However, if we take a look at virus total here, we get a 44 status code. What that tells me is that our enrichment didn't work. And taking a look at the message resource not found. Well, now it's time to do some troubleshooting. If you take a look at the URL, there's some weird behavior happening here, which is why virus total threw out a resource not found. And if I take a look at the hash value, let's click on the plus, go over hash, we see that there is success, group zero, and found. So, what that tells me is that because I'm just simply listing out Shaw 256-ash, I'm essentially telling Virus Total to include everything it found, even including the hash and the successes. And I don't want that. I just want them to include the hash. To do this, we'll need to remove our current SHA 256 hash. Click on the plus icon. Go back over to Shaw 256. And we need to specify this right here, which is the list. We don't want to include the success. We don't want to include the group. Nor do we want to include the found. We just want to include list which is under group because this right here should in theory contain our hash. Click on save. I'll open up the explore runs and let's rerun our workflow. So we have our data here. We have virus total and it says hey status 200. Beautiful. So that tells me that it worked successfully and we do have our attributes. Perfect. Now I wanted to pause here for a second and let you know that if you are interested in learning how to become a sock analyst, I have created a dedicated sock community. And inside of that, I have created what is called the 90day sock accelerator. Essentially, you commit to 90 days and you should come out with enough skills to become a great sock analyst. In addition to this, I have also created a sock simulator where you get to get hands-on experience with enterprise tooling such as Microsoft XDR and Microsoft Sentinel. So, if you ever wanted real hands-on experience to put onto your resume, this is it. You can learn more about this in the description down below. Let's get back to it. The next thing we want to do is include the Hive. So, I'll drag the Hive app right here on the left. And just in case you don't see it, you can always just search for the hive. Just like that. And before we attach this to anything, we need to head over to the hive and create an account specifically for this automation. So I'm back over to the hive here and let's log in. And the first thing we need to do is click on this plus button to add a new organization. The name I'll type in my defer. My defer sock automation project. Please visit my school community at school.com/myer and then I'll click on confirm and let's go into the organization by clicking on it and we'll click on this plus button to add a user. The first user it is going to be my defer. This is going to be a normal account and then later on we'll create a service account. I'll need to add in a random email. I'll just say at test.com is my defer and the profile I'll select it as an analyst. Go ahead and save and add another. Now we want to add a service account and I'll name this as shuffletest.com. Let's say soore. And for the profile I'll just select analyst as well. Click on confirm and we should have two users. Now let's select soore and let's click on this eyeball icon. What we want to do is create an API key for this particular account. I'll click on create and let's copy this out. Now we'll head over to our shuffle and we need to create an authentication with the hive. So I'll do this by pasting in my API key. And for the label I'll just say sock auto update. Uh let's do THP. for the URL. This is going to be our public IP address for the Hive, which in our case again it is 155. I'll just copy the IP and let's paste that in here. Do make sure that you include the port as well, which is 9,000. Hit submit and make sure that your authentication is using the correct one, which in my case I named it as sock autoupdate-tp. All right. Now we can connect virus total over to the hive. Now what do we want the hive to do? By default it is set to get alert and we don't want to do that. Instead we want to create an alert. And in the previous sock automation project we did go over these fields here where I went ahead and started entering some values. But instead this time around we are going to shift from simple to advanced. And here we are going to start updating some of these fields. And we'll start off with the description. I'm going to go ahead and remove everything in between the quotes. So like that. And I'll select the plus icon. Head over to runtime arguments. And I'll put in the title instead. Now you might be like, where did my title go? Well, it's actually all the way at the bottom. It's right here. Exact title. Go ahead and copy that or cut it. and we'll paste that in here. For the external link, I'll just leave that as is. For the flag variable, for some reason, this particular application doesn't like it. So instead, I'll just simply type in false. For the PAP, I'll type in two. For the severity, let's remove that. Go into runtime argument, and I'll replace it with my severity, which is this right here. For the source, remove that one. We'll put in the pretext which is wasall alert. As for the source ref, I'll remove that. Put in our rule ID. For the status, this is going to always be new. And for the summary, just for now, we'll just type in mimikats activity detected on host. put in the computer name, which is right here. For the tags, I'll go ahead and put in a square bracket. Let's just do T10003. And let's go ahead and remove the outside quotes. For the title, we replace it with our title. And the TLP, let's just say two. And the type is going to be internal. All right, that was a lot of modifications there, but let's go ahead and save this out and click on this play button. Let's hope for the best. All right, everything is looking green, so I think that's good news. Let's take a look. We got our events. Shaw 256 worked, virus total worked, and the hive bad request. Invalid JSON. Okay, let's take a look at the errors. Severity unexpected JS number. Okay, so if we go over to the severity, we do see it as this right here. Exact severity. And it didn't like that. So in this case, I'll just say two. Let's try that. Save it out. Or actually, I'll follow the severity of the alert itself and hit play. And looking at the hive. Okay, we got a 2011. So, if we go over to the dashboard of the hive and if I log out here, log into the my def for account test.com. Oh, what was the password? I don't think I created did I create a password for this? I actually don't remember. Okay, let me go back in the organization. Click on the eyeball. Yeah. Okay. No. Set a new password. Let's reset the password. Confirm. Okay. And now let's log in. My deferest.com. And here we go. Under alerts, we do get our ticket. Perfect. Or alert in this case. But when we click inside of it, we get our description. Mimikat's activity detected on host. Now, of course, you can make this look a lot more fancier and full, but this is just a proof of concept. Just making sure that it actually works. The next part is to send an email to the sock analyst. So if we go back over to our shuffle and if we search for email, I'll drag this email application here and by default it selects send email SMTP. Now we could use a custom SMTP server. However, if we select send email shuffle, this may or may not work. Last time I tried it didn't work. But in the previous sock automation, this is what we used. So, let me try this one more time and see if it works. I'll connect virus total over to the email and I'll send a random email to my account which is at my defer-challenge at protonmail.com. Test and I'll just leave this as is. Save out your workflow. Make sure that there's data inside of this text box. I went ahead and refreshed the page just to show you what will happen if you don't have anything under this text box. If I click on play, it'll say, "Hey, provide an execution argument." So then you'll need to select any one of these that you ran previously and then it should go out and do its thing. But before I do that, let me go ahead and just remove this branch because I don't need the hive yet. I'm just testing out this email. Let's click on this play button and we'll use a previous used argument. Let's take a look. Email was successfully sent. All right, let's take a look. And we do indeed see it. That's awesome. So they fixed this application. That's great. That makes my life a lot easier. What we can do now is change this up. Mimiat detected and then put whatever you want under this body. Then we can attach virus total back to the hive. Save it out and rerun it. So now if I take a look at my email, the subject is mimikat detected and of course whatever the body of the email is. And that is pretty much the updated version for the sock automation project. Everything else in the video is still relevant and there are no changes. Well, as far as I know. If there is, let me know and I'll be sure to put a comment under the video just to make sure that everybody can complete the
+# Phase 4 – SOAR Automation with Shuffle, VirusTotal Enrichment, TheHive Alerting & Email Notification
+
+## Objective
+
+Integrate all SOC components into a fully automated workflow:
+
+* Wazuh → Shuffle (SOAR)
+* Automated hash extraction
+* VirusTotal enrichment
+* Alert creation in TheHive
+* Email notification to SOC analyst
+
+This phase validates **end-to-end SOC automation** from detection to response.
+
+---
+
+## 1. Shuffle Workflow Creation
+
+### Workflow Setup
+
+1. Log in to Shuffle
+2. Navigate to **Workflows**
+3. Click **Create Workflow**
+4. Create workflow **from scratch**
+
+### Workflow Name
+
+```text
+my-dfir-soc-automation
+```
+
+---
+
+## 2. Webhook Configuration (Shuffle)
+
+### Add Webhook Trigger
+
+* Drag **Webhook** node into the workflow
+* Copy the **Webhook URI**
+
+---
+
+## 3. Wazuh Manager → Shuffle Integration
+
+### Edit Wazuh Manager Configuration
+
+```bash
+nano /var/ossec/etc/ossec.conf
+```
+
+Add the following integration block **between `<global>` and `<alerts>`**:
+
+```xml
+<integration>
+  <name>shuffle</name>
+  <hook_url>https://<SHUFFLE_WEBHOOK_URL></hook_url>
+  <rule_id>100001</rule_id>
+  <alert_format>json</alert_format>
+</integration>
+```
+
+> `rule_id` corresponds to the custom Mimikatz detection rule from Phase 3.
+
+### Restart Wazuh Manager
+
+```bash
+systemctl restart wazuh-manager
+```
+
+---
+
+## 4. Webhook Validation
+
+### Trigger Detection
+
+* Execute `mimikatz.exe` on Windows 11 endpoint
+
+### Shuffle Validation
+
+* Workflow run appears under **Explore Runs**
+* Incoming data contains:
+
+  * Wazuh alert
+  * Full log payload
+  * Rule metadata
+
+This confirms successful alert forwarding.
+
+---
+
+## 5. SHA-256 Hash Extraction (Shuffle Tools)
+
+### Add Regex Node
+
+* App: **Shuffle Tools**
+* Function: **Regex capture group**
+
+### Regex Pattern
+
+```regex
+SHA256=([0-9a-fA-F]{64})
+```
+
+### Input Source
+
+* Runtime argument → `hashes`
+
+### Output
+
+* Extracted SHA-256 hash of detected binary
+
+---
+
+## 6. VirusTotal Integration
+
+### Authentication
+
+1. Generate VirusTotal API key
+2. Add authentication in Shuffle
+3. Assign authentication to VirusTotal app
+
+---
+
+### VirusTotal Action
+
+* Action: **Get hash report**
+* Hash Input:
+
+  * Regex output → `list` (hash value only)
+
+### Validation
+
+* HTTP Status: `200`
+* VirusTotal enrichment data returned
+
+---
+
+## 7. TheHive Integration
+
+### TheHive Preparation
+
+#### Create Organization
+
+* Organization Name:
+
+```text
+my-dfir-soc-automation
+```
+
+#### Create Users
+
+1. Analyst user (interactive)
+2. Service account (API access)
+
+#### Generate API Key
+
+* Generate API key for service account
+* Copy securely
+
+---
+
+### Shuffle → TheHive Authentication
+
+* App: **TheHive**
+* Authentication:
+
+  * API Key
+  * URL:
+
+```text
+http://<HIVE_PUBLIC_IP>:9000
+```
+
+---
+
+## 8. Create Alert in TheHive (Advanced Mode)
+
+### Action
+
+* **Create Alert**
+
+### Key Fields Configuration
+
+```json
+{
+  "title": "{{title}}",
+  "description": "{{title}}",
+  "type": "internal",
+  "source": "wazuh-alert",
+  "sourceRef": "{{rule.id}}",
+  "severity": 2,
+  "tlp": 2,
+  "pap": 2,
+  "status": "New",
+  "summary": "Mimikatz activity detected on host {{agent.name}}",
+  "tags": ["T1003"]
+}
+```
+
+> Severity values must be numeric to avoid JSON validation errors.
+
+---
+
+### Validation
+
+* HTTP Status: `201`
+* Alert visible in **TheHive → Alerts**
+
+---
+
+## 9. Email Notification (SOC Analyst)
+
+### Add Email Node
+
+* App: **Shuffle Email**
+* Action: **Send Email (Shuffle)**
+
+### Email Configuration
+
+* Subject:
+
+```text
+Mimikatz Detected – SOC Alert
+```
+
+* Body:
+
+```text
+Mimikatz activity detected on {{agent.name}}.
+Alert has been created in TheHive.
+```
+
+* Recipient:
+
+```text
+soc-analyst@example.com
+```
+
+---
+
+### Validation
+
+* Email successfully delivered
+* Subject and body rendered correctly
+
+---
+
+## 10. Final Workflow Validation
+
+### Trigger Event
+
+```powershell
+.\mimikatz.exe
+```
+
+### Expected Automated Flow
+
+1. Sysmon detects execution
+2. Wazuh triggers custom rule
+3. Alert forwarded to Shuffle
+4. SHA-256 extracted
+5. VirusTotal enrichment completed
+6. Alert created in TheHive
+7. Email notification sent
+
+---
+
+## Phase Completion Criteria
+
+* Wazuh → Shuffle integration operational
+* Hash extraction successful
+* VirusTotal enrichment successful
+* TheHive alert created automatically
+* SOC email notification delivered
+
+---
+
+## Project Completion
+
+**SOC Automation Project – Complete**
+
+This lab demonstrates:
+
+* Endpoint telemetry ingestion
+* Custom detection engineering
+* SOAR-based enrichment
+* Case management automation
+* Analyst notification pipeline
