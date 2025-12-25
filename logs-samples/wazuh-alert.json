@@ -11,7 +11,7 @@
   },
   "agent": {
     "id": "001",
-    "name": "WIN11-ENDPOINT",
+    "name": "WIN10-ENDPOINT",
     "ip": "192.168.1.20"
   },
   "data": {
