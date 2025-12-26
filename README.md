@@ -26,6 +26,8 @@ The lab focuses on **hands-on SOC engineering**, **SIEM detections**, and **SOAR
 ### SOC Automation Architecture Overview
 <img width="1582" height="695" alt="SOC-Automation-Project-Diagram" src="https://github.com/user-attachments/assets/608c6d58-70f7-488b-bb40-0f48e6d6d99e" />
 
+### Anatomy of an Automated SOC Workflow
+<img width="2752" height="1536" alt="unnamed(3)" src="https://github.com/user-attachments/assets/f24550a8-9a7d-4a73-8faa-076a84162b79" />
 
 ### High-Level Flow
 
